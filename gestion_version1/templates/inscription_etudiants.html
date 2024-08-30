@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Étudiants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inscription_etudiants.css') }}">
+</head>
+<body>
+    <h1>Inscription des Étudiants</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('inscription_etudiants') }}" method="POST">
+        <fieldset>
+            <legend>Étudiant</legend>
+            <label for="nom_etudiant">Nom:</label>
+            <input type="text" id="nom_etudiant" name="nom_etudiant" required><br>
+
+            <label for="prenom_etudiant">Prénom:</label>
+            <input type="text" id="prenom_etudiant" name="prenom_etudiant" required><br>
+
+            <label for="date_de_naissance">Date de Naissance:</label>
+            <input type="date" id="date_de_naissance" name="date_de_naissance" required><br>
+
+            <label for="lieu_de_naissance">Lieu de Naissance:</label>
+            <input type="text" id="lieu_de_naissance" name="lieu_de_naissance" required><br>
+
+            <label for="nationalite">Nationalité:</label>
+            <input type="text" id="nationalite" name="nationalite" required><br>
+
+            <label for="adresse">Adresse:</label>
+            <input type="text" id="adresse" name="adresse" required><br>
+
+            <label for="telephone">Téléphone:</label>
+            <input type="tel" id="telephone" name="telephone" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="classe">Classe:</label>
+            <select id="classe" name="classe" required>
+                <option value="Prescolaire">Prescolaire</option>
+                <option value="12è">12è</option>
+                <option value="11è">11è</option>
+                <option value="10è">10è</option>
+                <option value="9è">9è</option>
+                <option value="8è">8è</option>
+                <option value="7è">7è</option>
+                <option value="4è">4è</option>
+                <option value="3è">3è</option>
+                <option value="2nd">2nd</option>
+                <option value="1èS">1èS</option>
+                <option value="1èL">1èL</option>
+                <option value="1èT">1èT</option>
+                <option value="TA">TA</option>
+                <option value="TD">TD</option>
+                <option value="TC">TC</option>
+            </select><br>
+
+            <label for="etablissement_precedente">Établissement Précédent:</label>
+            <input type="text" id="etablissement_precedente" name="etablissement_precedente" required><br>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Parents</legend>
+            <label for="nom_parent">Nom:</label>
+            <input type="text" id="nom_parent" name="nom_parent" required><br>
+
+            <label for="prenom_parent">Prénom:</label>
+            <input type="text" id="prenom_parent" name="prenom_parent" required><br>
+
+            <label for="adresse_parent">Adresse:</label>
+            <input type="text" id="adresse_parent" name="adresse_parent" required><br>
+
+            <label for="telephone_parent">Téléphone:</label>
+            <input type="tel" id="telephone_parent" name="telephone_parent" required><br>
+
+            <label for="email_parent">Email:</label>
+            <input type="email" id="email_parent" name="email_parent" required><br>
+
+            <label for="profession_parent">Profession:</label>
+            <input type="text" id="profession_parent" name="profession_parent" required><br>
+
+            <label for="relation_avec_etudiant">Relation avec l'étudiant:</label>
+            <select id="relation_avec_etudiant" name="relation_avec_etudiant" required>
+                <option value="pere">Père</option>
+                <option value="mere">Mère</option>
+                <option value="tuteur">Tuteur</option>
+            </select><br>
+
+            <label for="situation_familiale">Situation Familiale:</label>
+            <select id="situation_familiale" name="situation_familiale" required>
+                <option value="marié">Marié</option>
+                <option value="divorcé">Divorcé</option>
+                <option value="celibataire">Célibataire</option>
+            </select><br>
+
+            <label for="autorisation_de_sortie">Autorisation de Sortie:</label>
+            <input type="text" id="autorisation_de_sortie" name="autorisation_de_sortie" required><br>
+
+            <label for="personne_a_contacter_en_cas_d_urgence">Personne à Contacter en Cas d'Urgence:</label>
+            <input type="text" id="personne_a_contacter_en_cas_d_urgence" name="personne_a_contacter_en_cas_d_urgence" required><br>
+        </fieldset>
+
+        <button type="submit">S'inscrire</button>
+        <button type="button" onclick="location.href='{{ url_for('home') }}'">Retour à l'accueil</button>
+    </form>
+    <script src="{{ url_for('static', filename='js/inscription_etudiants.js') }}"></script>
+</body>
+</html>

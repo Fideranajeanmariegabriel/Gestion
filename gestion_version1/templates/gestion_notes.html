@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gestion_notes.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Ajouter une note</h1>
+        <form id="noteForm" action="/gestion_notes" method="POST">
+            <div class="form-group">
+                <label for="matiere">Matière</label>
+                <select id="matiere" name="matiere" required></select>
+            </div>
+            <div class="form-group">
+                <label for="etudiant">Étudiant</label>
+                <select id="etudiant" name="etudiant_id" required></select>
+            </div>
+            <div class="form-group">
+                <label for="bimestre">Bimestre</label>
+                <select id="bimestre" name="bimestre" required>
+                    <option value="1">Bimestre 1</option>
+                    <option value="2">Bimestre 2</option>
+                    <option value="3">Bimestre 3</option>
+                    <option value="4">Bimestre 4</option>
+                    <option value="5">Bimestre 5</option>
+                    <option value="6">Bimestre 6</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="note">Note</label>
+                <input type="number" id="note" name="note" min="0" max="20" required>
+            </div>
+            <input type="submit" value="Ajouter la note">
+            <div class="error-message" id="error-message">Vous ne pouvez ajouter des notes que pour les matières que vous enseignez.</div>
+        </form>
+    </div>
+
+    <!-- JSON.stringify pour injecter les données JS -->
+    <script id="matieres-data" type="application/json">{{ matieres | tojson }}</script>
+    <script id="etudiants-data" type="application/json">{{ etudiants | tojson }}</script>
+    
+    <script src="{{ url_for('static', filename='js/gestion_notes.js') }}"></script>
+</body>
+</html>

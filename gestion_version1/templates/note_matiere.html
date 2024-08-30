@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/note_matiere.css') }}">
+    <title>Note Matiere</title>
+</head>
+<body>
+    <h1>Welcome, {{ nom_du_professeur }}</h1>
+    <form method="POST" action="{{ url_for('note_matiere', nom_du_professeur=nom_du_professeur) }}">
+        <label for="annee_scolaire">Année scolaire</label>
+        <input type="text" id="annee_scolaire" name="annee_scolaire" required>
+
+        <label for="bimestre">Bimestre</label>
+        <input type="text" id="bimestre" name="bimestre" required>
+
+        <label for="classe">Classe</label>
+        <select id="classe" name="classe" required>
+            {% for classe in classes %}
+            <option value="{{ classe }}">{{ classe }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="matiere">Matière</label>
+        <select id="matiere" name="matiere" required>
+            {% for matiere in matieres %}
+            <option value="{{ matiere }}">{{ matiere }}</option>
+            {% endfor %}
+        </select>
+
+        <div id="notes_section">
+            <!-- Dynamically insert student list and note fields -->
+            <!-- Example format: <input type="text" name="note_{{ student_id }}" /> -->
+        </div>
+
+        <button type="submit">Envoyer</button>
+    </form>
+    <script src="{{ url_for('static', filename='js/note_matiere.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <h1>Bienvenue dans l'accueil de notre établissement</h1>
+    <div class="buttons">
+        <button onclick="location.href='{{ url_for('inscription_etudiants') }}'">Domaine Etudiants</button>
+        <button onclick="location.href='{{ url_for('inscription_professeurs') }}'">Domaine Professeurs</button>
+        <button onclick="location.href='{{ url_for('gestion_etudiants') }}'">Gestion Etudiants</button>
+        <button onclick="location.href='{{ url_for('gestion_professeurs') }}'">Gestion Professeurs</button>
+        <button onclick="location.href='{{ url_for('gestion_notes') }}'">Gestion Notes</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

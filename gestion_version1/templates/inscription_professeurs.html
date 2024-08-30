@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Professeurs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inscription_professeurs.css') }}">
+</head>
+<body>
+    <h1>Inscription des Professeurs</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('inscription_professeurs') }}" method="POST">
+        <fieldset>
+            <legend>Professeur</legend>
+            <!-- Champs existants -->
+            <label for="nom_professeur">Nom:</label>
+            <input type="text" id="nom_professeur" name="nom_professeur" required><br>
+
+            <label for="prenom_professeur">Prénom:</label>
+            <input type="text" id="prenom_professeur" name="prenom_professeur" required><br>
+
+            <label for="date_de_naissance">Date de Naissance:</label>
+            <input type="date" id="date_de_naissance" name="date_de_naissance" required><br>
+
+            <label for="lieu_de_naissance">Lieu de Naissance:</label>
+            <input type="text" id="lieu_de_naissance" name="lieu_de_naissance" required><br>
+
+            <label for="nationalite">Nationalité:</label>
+            <input type="text" id="nationalite" name="nationalite" required><br>
+
+            <label for="adresse">Adresse:</label>
+            <input type="text" id="adresse" name="adresse" required><br>
+
+            <label for="telephone">Téléphone:</label>
+            <input type="tel" id="telephone" name="telephone" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="numero_de_securite_sociale">Numéro de Sécurité Sociale:</label>
+            <input type="text" id="numero_de_securite_sociale" name="numero_de_securite_sociale" required><br>
+
+            <label for="diplomes">Diplômes:</label>
+            <input type="text" id="diplomes" name="diplomes" required><br>
+
+            <label for="specialite">Spécialité:</label>
+            <input type="text" id="specialite" name="specialite" required><br>
+
+            <label for="experience_professionnelle">Expérience Professionnelle:</label>
+            <input type="text" id="experience_professionnelle" name="experience_professionnelle" required><br>
+
+            <label for="etablissement_precedents">Établissements Précédents:</label>
+            <input type="text" id="etablissement_precedents" name="etablissement_precedents" required><br>
+
+            <label for="date_d_entree_en_fonction">Date d'Entrée en Fonction:</label>
+            <input type="date" id="date_d_entree_en_fonction" name="date_d_entree_en_fonction" required><br>
+
+            <label for="poste_actuel">Poste Actuel:</label>
+            <input type="text" id="poste_actuel" name="poste_actuel" required><br>
+
+            <label for="disponibilite">Disponibilité:</label>
+            <input type="text" id="disponibilite" name="disponibilite" required><br>
+
+            <label for="langues_parlees">Langues Parlées:</label>
+            <input type="text" id="langues_parlees" name="langues_parlees" required><br>
+
+            <label for="personne_a_contacter_en_cas_d_urgence">Personne à Contacter en Cas d'Urgence:</label>
+            <input type="text" id="personne_a_contacter_en_cas_d_urgence" name="personne_a_contacter_en_cas_d_urgence" required><br>
+
+            <label for="references">Références:</label>
+            <input type="text" id="references" name="references" required><br>
+
+            <label for="mot_de_passe">Mot de Passe:</label>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" required><br>
+
+            <!-- Nouveau champ pour les matières enseignées -->
+            <label for="matieres_enseigner">Matières à Enseigner:</label>
+            <select id="matieres_enseigner" name="matieres_enseigner" multiple required>
+                <option value="Mathematiques">Mathématiques</option>
+                <option value="Physiques">Physiques</option>
+                <option value="Chimies">Chimies</option>
+                <option value="Sciences_de_la_Vie_et_de_la_Terre">Sciences de la Vie et de la Terre</option>
+                <option value="Français">Français</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Malagasy">Malagasy</option>
+                <option value="Espagnol">Espagnol</option>
+                <option value="Allemand">Allemand</option>
+                <option value="Education_Physique_et_Sportives">Éducation Physique et Sportive</option>
+                <option value="Informatiques">Informatique</option>
+                <option value="Sciences_et_Techniques_Industrielles">Sciences et Techniques Industrielles</option>
+                <option value="Sciences_de_l_Ingenieur">Sciences de l'Ingénieur</option>
+            </select><br>
+        </fieldset>
+
+        <button type="submit">S'inscrire</button>
+        <button type="button" onclick="location.href='{{ url_for('home') }}'">Retour à l'accueil</button>
+    </form>
+    <script src="{{ url_for('static', filename='js/inscription_professeurs.js') }}"></script>
+</body>
+</html>
